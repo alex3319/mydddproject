@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Категории{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h1>Все товары</h1>
+
+    <div class="row">
+
+        {% for category in categories %}
+
+           <h2>{{ category.name }}</h2>
+
+            {% for products in category.products %}
+
+                <div class="col-md-3">
+                    <div class="card h-100">
+
+                        <img data-src="holder.js/216x180" class="card-img-top" alt="216x180" style="width: 100%; height: 180px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xODI2NGY4ZWQ4ZiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE4MjY0ZjhlZDhmIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ0LjA1NDY4NzUiIHk9Ijc0LjUiPjE0MHgxNDA8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true">
+
+                        <div class="card-header">
+                            <h5 class="card-title">{{ products.name }}</h5>
+                        </div>
+
+
+
+                        <div class="card-body">
+
+                            <p class="card-text">{{ products.description }}</p>
+                            <p>{{ products.price }} руб.</p>
+                            <a href="#" class="btn btn-primary">В корзину</a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+
+
+            <div class="alert alert-danger" role="alert">
+                Отсутствуют товары!
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

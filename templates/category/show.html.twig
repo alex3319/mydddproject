@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>{{ category.name }}</h1>
+
+
+    <div class="row">
+        {% for product in category.products %}
+{#            {% if product.is_new %} {% endif %}#}
+        <div class="col-md-4">
+            <figure class="card card-product">
+                <div class="img-wrap"><img src="/images/items/1.jpg"></div>
+                <figcaption class="info-wrap">
+                    <h4 class="title"><a href="/menu/{{ category.slug }}/{{ product.slug }}/">
+                            {{ product.name }}</a></h4>
+                    <p class="desc">Some small description goes here</p>
+                    <div class="rating-wrap">
+                        <ul class="rating-stars">
+                            <li style="width:80%" class="stars-active">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+                        <div class="label-rating">132 reviews</div>
+                        <div class="label-rating">154 orders </div>
+                    </div> <!-- rating-wrap.// -->
+                </figcaption>
+                <div class="bottom-wrap">
+                    <a href="" class="btn btn-sm btn-primary float-right">Order Now</a>
+                    <div class="price-wrap h5">
+                        <span class="price-new">{{ product.price }} Р</span> <del class="price-old">{{ product.price }} Р</del>
+                    </div> <!-- price-wrap.// -->
+                </div> <!-- bottom-wrap.// -->
+            </figure>
+        </div> <!-- col // -->
+        {% else %}
+
+            <h3>no records found</h3>
+
+        {% endfor %}
+
+    </div> <!-- row.// -->
+
+
+
+
+
+
+
+
+
+
+
+    <a href="{{ path('app_category_index') }}">back to list</a>
+
+    </div>
+{% endblock %}

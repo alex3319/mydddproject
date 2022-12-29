@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список заказов{% endblock %}
+
+{% block body %}
+
+<div class="container text-center m-3 p-3">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Заказ  №  {{ order.id }}</h5>
+          <p class="card-text">Статус заказа: {{ order.statusId }}</p>
+          <p class="card-text">{{ order.datetime|date('d.m.Y H:i:s') }}</p>
+          <h6 class="card-title">Информация о заказе</h5>
+          <p class="card-text">Имя: {{ user.name }}</p>
+          <p class="card-text">Телефон: {{ user.phone }}</p>
+          <p class="card-text">Адрес доставки: г.Красноярск ул. Красных комиссаров д.1, кв.2</p>   
+          <p class="card-text">Тип оплаты: Наличными</p>                  
+          <p class="card-text">Оплата: Оплата при получении</p>   
+          <p class="card-text">Время оформления: {{ order.datetime|date('d.m.Y H:i:s') }}</p>
+          <p class="card-text">Вы хотите получить заказ: В течении 90 минут </p>
+        </div>
+      </div> <!-- card.// -->
+    </div>
+    <div class="col-3">
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

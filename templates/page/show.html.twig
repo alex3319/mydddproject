@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page{% endblock %}
+
+{% block body %}
+    <h1>Page</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ page.uuid }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ page.name }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ page.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ page.description }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ page.keywords }}</td>
+            </tr>
+            <tr>
+                <th>H1</th>
+                <td>{{ page.h1 }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ page.content }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ page.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_page_index') }}">back to list</a>
+
+
+{% endblock %}

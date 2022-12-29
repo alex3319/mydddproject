@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список заказов{% endblock %}
+
+{% block body %}
+
+<div class="container text-center m-3 p-3">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6">
+      <h5 class="card-title">Список заказов</h5>
+
+      <!---- карточка заказа ---->
+      <div class="card">
+        <table class="table table-hover shopping-cart-wrap">
+          <thead class="text-muted">
+            <tr>
+              <th scope="col">Заказ</th>
+              <th scope="col" width="200" class="text-right">Статус</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for key, item in orders %}
+            <tr>
+              <td>
+                <figure class="media">
+                  <div class="img-wrap">
+                    <img src="{{ asset('images/order.png') }}" class="img-thumbnail img-sm">
+                  </div>
+                  <figcaption class="media-body">
+
+                      <h6 class="title text-truncate">
+                        <a href="/profile/order/{{ item.id }}">
+                          Заказ №{{ item.id }}
+                        </a>
+                      </h6>
+                      <dl class="dlist-inline small">
+                        <dt>Принят: {{ item.datetime|date("H:i:s d.m.Y") }}</dt>
+                        <dd>{{ item.summ }}₽</dd>
+                      </dl>
+                  </figcaption>
+                </figure> 
+              </td>
+              <td class="text-right"> 
+                  <dt>{{ item.statusId }}</dt>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div> <!-- card.// -->
+      <!---- карточка заказа ---->
+
+      <p class="card-text">
+        Здесь хранится история ваших заказов.<br>
+        Чтобы сделать заказ перейдите в меню.
+      </p>
+
+      <a href="/menu/" class="btn btn-primary">Перейти в меню</a>
+
+    </div>
+    <div class="col-3">
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Сбросить пароль{% endblock %}
+
+{% form_theme requestForm 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+<div class="container text-center m-3 p-3">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6">
+
+      <h1>Сбросить пароль</h1>
+
+      {{ form_start(requestForm) }}
+          {{ form_row(requestForm.email) }}
+          <div>
+              <small>
+                  Введите адрес электронной почты, и мы вышлем вам
+                  ссылку для сброса пароля.
+              </small>
+          </div>
+          <button class="btn btn-primary">Выслать ссылку на почту</button>
+      {{ form_end(requestForm) }}
+
+    </div>
+    <div class="col-3">
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+
+</div>
+
+{% endblock %}

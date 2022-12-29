@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+
+    <!-- ========================= SECTION CONTENT ========================= -->
+    <section class="section-content bg padding-y-sm">
+        <div class="container">
+            <nav class="mb-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="/menu/{{ category.slug }}">{{ category.name }}</a></li>
+{#                    <li class="breadcrumb-item active" aria-current="page">Items</li>#}
+                </ol>
+            </nav>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <main class="card">
+                        <div class="row no-gutters">
+                            <aside class="col-sm-6 border-right">
+                                <article class="gallery-wrap">
+                                    <div class="img-big-wrap">
+                                        <div> <a href="/images/piza1.png" data-fancybox=""><img src="/images/piza1.png"></a></div>
+                                    </div> <!-- slider-product.// -->
+                                </article> <!-- gallery-wrap .end// -->
+                            </aside>
+                            <aside class="col-sm-6">
+                                <article class="card-body">
+                                    <!-- short-info-wrap -->
+                                    <h3 class="title mb-3">{{ product.name }}</h3>
+
+                                    <div class="mb-3">
+                                        <var class="price h3 text-warning">
+                                            <span class="num">{{ product.price }} </span>
+                                            <span class="currency">Р</span>
+                                        </var>
+                                    </div> <!-- price-detail-wrap .// -->
+
+                                    <dl>
+                                        <dt>Описание</dt>
+                                        <dd><p>{{ product.description }}</p></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-3">Вес</dt>
+                                        <dd class="col-sm-9">{{ product.weight }} гр</dd>
+                                    </dl>
+
+                                    {% if options.to_add is defined %}
+                                        <dl>
+                                            <dt>Добавить:</dt>
+                                            {% for add in options.to_add %}
+                                                <dd><input type="checkbox" id="option-{{ add.id }}" name="options[add][]" value="{{ add.id }}" /><label for="option-{{ add.id }}">{{ add.name }}, +{{ add.price }} руб.</label></dd>
+                                            {% endfor %}
+                                        </dl>
+                                    {% endif %}
+
+                                    {% if options.to_remove is defined %}
+                                        <dl>
+                                            <dt>Убрать:</dt>
+                                            {% for remove in options.to_remove %}
+                                                <dd><input type="checkbox" id="option-{{ remove.id }}" name="options[remove][]" value="{{ remove.id }}" /><label for="option-{{ remove.id }}">{{ remove.name }}</label></dd>
+                                            {% endfor %}
+                                        </dl>
+                                    {% endif %}
+
+                                    {% if options.options is defined %}
+                                        <dl>
+                                            <dt>Опции:</dt>
+                                            {% for option in options.options %}
+                                                <dd><input type="checkbox" id="option-{{ option.id }}" name="options[options][]" value="{{ option.id }}" /><label for="option-{{ option.id }}">{{ option.name }}</label></dd>
+                                            {% endfor %}
+                                        </dl>
+                                    {% endif %}
+
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <dl class="dlist-inline">
+                                                <dt>Количество:</dt>
+                                                <dd>
+                                                    <input type="text" class="form-control form-control-sm" id="amount" style="width:70px;" value="1">
+                                                </dd>
+                                            </dl>  <!-- item-property .// -->
+                                        </div> <!-- col.// -->
+
+                                    </div> <!-- row.// -->
+                                    <hr>
+
+                                    <a href="#" class="btn btn-warning add-product" data-product-id="{{ product.id }}">Заказать</a>
+                                    <!-- short-info-wrap .// -->
+                                </article> <!-- card-body.// -->
+                            </aside> <!-- col.// -->
+                        </div> <!-- row.// -->
+                    </main> <!-- card.// -->
+
+                </div> <!-- col // -->
+
+            </div> <!-- row.// -->
+
+{#            <a href="{{ path('app_product_index') }}">back to list</a>#}
+{#            <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>#}
+{#            {{ include('product/_delete_form.html.twig') }}#}
+        </div><!-- container // -->
+    </section>
+    <!-- ========================= SECTION CONTENT .END// ========================= -->
+
+{% endblock %}

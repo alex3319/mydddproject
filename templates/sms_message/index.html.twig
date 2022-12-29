@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SmsMessage index{% endblock %}
+
+{% block body %}
+    <h1>SmsMessage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Message</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sms_message in sms_messages %}
+            <tr>
+                <td>{{ sms_message.id }}</td>
+                <td>{{ sms_message.sender }}</td>
+                <td>{{ sms_message.receiver }}</td>
+                <td>{{ sms_message.message }}</td>
+                <td>
+                    <a href="{{ path('app_sms_message_show', {'id': sms_message.id}) }}">show</a>
+                    <a href="{{ path('app_sms_message_edit', {'id': sms_message.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sms_message_new') }}">Create new</a>
+{% endblock %}
